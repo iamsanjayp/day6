@@ -3,19 +3,92 @@
 @tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --background-gradient: linear-gradient(135deg, #e0c3fc, #8ec5fc); /* soft purple to blue gradient */
+  --chatbox-gradient: linear-gradient(135deg, #ffffff, #f8f8ff); /* subtle gradient for chat box */
+  --ai-response-color: #9b59b6; /* purple-blue hue */
+  --user-response-color: #3498db; /* blue hue */
+  --input-background: #f0f4ff;
 }
 
 body {
-  color: var(--foreground);
-  background: var(--background);
+  color: black;
+  background: var(--background-gradient);
   font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.chat-container {
+  width: 100%;
+  max-width: 400px; /* Mobile-friendly width */
+  margin: 20px auto;
+  padding: 20px;
+  border-radius: 12px;
+  background: var(--chatbox-gradient);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.chat-box {
+  background-color: var(--input-background);
+  border-radius: 8px;
+  padding: 15px;
+  max-height: 60vh;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.user-input {
+  display: flex;
+  gap: 10px;
+}
+
+.responsebox {
+  flex-grow: 1;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: var(--input-background);
+}
+
+button {
+  padding: 10px 15px;
+  background-color: var(--user-response-color);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #2980b9;
+}
+
+.ai-response {
+  color: var(--ai-response-color);
+  font-family: monospace;
+  white-space: pre-wrap; /* Preserve line breaks */
+  background-color: rgba(155, 89, 182, 0.1); /* light background for AI response */
+  padding: 8px;
+  border-radius: 5px;
+}
+
+.user-response {
+  color: var(--user-response-color);
+  font-family: monospace;
+  text-align: right;
+  white-space: pre-wrap;
+  background-color: rgba(52, 152, 219, 0.1); /* light background for user response */
+  padding: 8px;
+  border-radius: 5px;
+  align-self: flex-end;
 }
